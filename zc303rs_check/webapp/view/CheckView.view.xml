@@ -1,0 +1,74 @@
+<mvc:View controllerName="zc303.rs.check.zc303rscheck.controller.CheckView"
+   xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:t="sap.ui.table"
+    xmlns:u="sap.ui.unified"
+	xmlns:c="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form">
+    <Page id="page" title="{i18n>title}">
+         <Panel headerText="사진업로드" class="sapUiResponsiveMargin" width="95%">
+        <t:Table id="tableList"
+                 rows="{/RPhotoSet}"
+                 selectionMode="Single"
+                 ariaLabelledBy="title"
+                 width="auto"
+                 selectionBehavior="RowOnly">
+            <t:extension>
+
+             </t:extension>
+            
+            <t:columns>
+                <t:Column width="8rem" hAlign="Center">
+                    <Label text="고객번호"  />
+                    <t:template>
+                        <Text text="{Custno}" wrapping="false" />
+                    </t:template>
+                </t:Column>
+                <t:Column width="8rem" hAlign="Center">
+                    <Label text="주문번호" />
+                    <t:template>
+                        <Text text="{Vbeln}" wrapping="false" />
+                    </t:template>
+                </t:Column>
+                <t:Column width="8rem" hAlign="Center">
+                    <Label text="시리얼넘버" />
+                    <t:template>
+                        <Text text="{Srnum}" wrapping="false" />
+                    </t:template>
+                </t:Column>
+                <t:Column width="8rem" hAlign="Center">
+                    <Label text="교육시작일" />
+                    <t:template>
+                        <Text text="{Rsdate}" wrapping="false" />
+                    </t:template>
+                </t:Column>
+                <t:Column width="8rem" hAlign="Center">
+                    <Label text="교육종료일" />
+                    <t:template>
+                        <Text text="{Redate}" wrapping="false" />
+                    </t:template>
+                </t:Column>
+                <t:Column width="8rem" hAlign="Center">
+                    <Label text="상태" />
+                    <t:template>
+                        <Text text="{Status}" wrapping="false" />
+                    </t:template>
+                </t:Column>
+                <t:Column width="23rem" hAlign="Center">
+            <Label text="사진" />
+            <t:template>
+                <Image
+                    src="{Photo}" 
+                    width="20%"
+                    height="auto"
+                    alt="사진" />
+            </t:template>
+        </t:Column>
+                
+            </t:columns>
+        </t:Table>
+         </Panel >
+
+    </Page>
+</mvc:View>

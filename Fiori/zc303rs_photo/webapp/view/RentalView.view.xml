@@ -7,7 +7,8 @@
     xmlns:l="sap.ui.layout"
     xmlns:f="sap.ui.layout.form">
     <Page id="page" title="{i18n>title}">
-        <Text text="asdf"/>
+        
+         <Panel headerText="사진업로드" class="sapUiResponsiveMargin" width="95%">
         <t:Table id="tableList"
                  rows="{/RPhotoSet}"
                  selectionMode="Single"
@@ -49,7 +50,7 @@
                 <Input id="Custno" placeholder="고객번호" width="7rem"/>
                 <Text text="　　"/>
                 <Label text="주문번호　　" class="customText"/>
-                <Input id="Vbeln" placeholder="주문번호" width="7rem"/>
+                <Input id="Vbeln" placeholder="주문번호" width="10rem"/>
                 <Text text="　　　"/>
                 <Label text="시리얼넘버　" class="customText"/>
                 <Input id="Srnum" placeholder="시리얼넘버" width="7rem"/>
@@ -68,7 +69,7 @@
                 <Text text="　　"/>
                 <Label text="사진업로드　" class="customText"/>
                 <Input id="Photo" placeholder="사진URL" width="15rem"/>
-                    <Text text="　　　　　　　　　　　　　　　　　　"/>
+                    <Text text="　　　　　　　　　　　"/>
                         <Button text = '지워져라얍!'   icon ="sap-icon://clear-all" press= "onClear"/>
                         <Button text = '보여줘라얍!' icon ="sap-icon://display"   press= "onDisplay"/>
                         <Button text = '수정되라 얍!'    icon ="sap-icon://edit"      press= "onUpdate"/>
@@ -77,6 +78,7 @@
 			</f:content>
 		</f:SimpleForm>
         </Panel >
+              
         <OverflowToolbar>
                     <Title id="title" text="랜탈회수리스트"/>
                 </OverflowToolbar>
@@ -119,7 +121,7 @@
                         <Text text="{Status}" wrapping="false" />
                     </t:template>
                 </t:Column>
-                <t:Column width="31rem" hAlign="Center">
+                <t:Column width="23rem" hAlign="Center">
             <Label text="사진" />
             <t:template>
                 <Image
@@ -132,6 +134,7 @@
                 
             </t:columns>
         </t:Table>
+         </Panel >
 
         <!-- <HBox class="sapUiSmallMargin">
             <u:FileUploader
