@@ -1,0 +1,266 @@
+<mvc:View controllerName="sdfdsfds.project1.controller.bsview"
+     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:u="sap.ui.unified"
+    xmlns:layout="sap.ui.layout"
+    xmlns:t="sap.ui.table">
+        <f:DynamicPage  id="dynamicPageId"
+			        stickySubheaderProvider="iconTabBar"
+			        class="sapUiNoContentPadding" 
+			        toggleHeaderOnTitleClick="{/titleClickable}"
+                    preserveHeaderStateOnScroll="true"
+                    >
+        
+        <f:title>
+            <f:DynamicPageTitle>
+            
+                <f:heading>
+                    <Title text="생산 계획 결재" level="H2"/>
+                </f:heading>
+                <f:expandedContent>
+                
+                <VBox>
+                    <Label text=""/>
+                    <Label text="결재 대기 리스트 탭을 통해 결재 대기 중인 생산계획을 승인 또는 반려할 수 있습니다."/>
+                
+                </VBox>
+
+                </f:expandedContent>
+            </f:DynamicPageTitle>
+        </f:title>
+
+        <f:content>
+
+            <IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding" select=".handleIconTabSelect"> 
+            <!-- select="ClickIcon"> -->
+                <items>
+                <IconTabFilter design="Horizontal" text="결재 대기 리스트" iconColor="Critical" icon="sap-icon://pending" key="Waiting" >
+                    <t:Table id = "SbmWating" rows="{/SbmcdSet}"
+                            selectionMode="Single" paste="onPaste"
+                            ariaLabelledBy="title" visibleRowCount="10" 
+                            selectionBehavior="RowSelector" cellClick="" 
+                            filter ="filterW">
+                    <t:columns>
+                        <t:Column width="11rem">
+                            <Label text="상신코드" textAlign="Center"/>
+                            <t:template>
+                                <Text text="{Sbmcd}" wrapping="false" textAlign="Center"/>
+                            </t:template>
+                        </t:Column>
+                            <t:Column width="11rem">
+                            <Label text="생산계획번호" textAlign="Center"/>
+                            <t:template>
+                                <Text text="{Pdpcode}" wrapping="false" textAlign="Center"/>
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="11rem">
+                            <Label text="상신자 명" textAlign="Center"/>
+                            <t:template>
+                                <Text text="{Sbmemp}" wrapping="false" textAlign="Center"/>
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="11rem">
+                            <Label text="상신 내용" textAlign="Center"/>
+                            <t:template>
+                                <Text text="{Sbmdesc}" wrapping="false" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="11rem">
+                            <Label text="결재 상태" textAlign="Center"/>
+                            <t:template>
+                                <Text text="{Apprst}" wrapping="false" textAlign="Center"/>
+                            </t:template>
+                        </t:Column>
+                    </t:columns>
+                </t:Table>
+                
+                <Toolbar id="FooterTB" height="50px">
+                    <ToolbarSpacer/>
+                        <Button text="승인" icon="sap-icon://accept" type="Accept"
+                                width="100px" press=".onPressApprv"
+                                class="sapUiSmallMarginBottom" ariaHasPopup="Dialog" />
+                        <Button text="반려" icon="sap-icon://decline" type="Reject"
+                                width="100px" press=".onPressReject"
+                                class="sapUiSmallMarginBottom" ariaHasPopup="Dialog" />
+                </Toolbar>
+
+                </IconTabFilter>
+
+                <IconTabFilter text="결재 승인 리스트" design="Horizontal" iconColor="Positive" icon="sap-icon://status-positive" key="Apprv">
+                    <t:Table id = "SbmAprv" rows="{/SbmASet}" 
+                            selectionMode="Single" paste="onPaste"
+                            ariaLabelledBy="title" visibleRowCount="11"
+                            selectionBehavior="RowOnly" cellClick="">
+                    <t:columns>
+                    <t:Column width="11rem">
+                            <Label text="결재번호" textAlign="Center"/>
+                            <t:template>
+                                <Text text="{Apprno}" wrapping="false" textAlign="Center"/>
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="11rem">
+                            <Label text="결재자" textAlign="Center"/>
+                            <t:template>
+                                <Text text="{Apprmp}" wrapping="false" textAlign="Center"/>
+                            </t:template>
+                        </t:Column>
+                        <!-- <t:Column width="11rem">
+                            <Label text="결재 상태" />
+                            <t:template>
+                                <Text text="{Apprst}" wrapping="false" textAlign="Center"/>
+                            </t:template>
+                        </t:Column> -->
+                        <t:Column width="11rem">
+                            <Label text="상신코드" textAlign="Center"/>
+                            <t:template>
+                                <Text text="{Sbmcd}" wrapping="false" textAlign="Center"/>
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="11rem">
+                            <Label text="생산계획번호" textAlign="Center"/>
+                            <t:template>
+                                <Text text="{Pdpcode}" wrapping="false" textAlign="Center"/>
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="11rem">
+                            <Label text="상신자 명" textAlign="Center"/>
+                            <t:template>
+                                <Text text="{Sbmemp}" wrapping="false" textAlign="Center"/>
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="11rem">
+                            <Label text="상신 내용" />
+                            <t:template>
+                                <Text text="{Sbmdesc}" wrapping="false" textAlign="Center"/>
+                            </t:template>
+                        </t:Column>
+
+                    </t:columns>
+                </t:Table>
+                </IconTabFilter>
+                
+                <IconTabFilter text="결재 반려 리스트" design="Horizontal" iconColor="Negative" icon="sap-icon://status-negative" key="Reject">
+                    <t:Table id = "Opsbmcd" rows="{/SbmRSet}" 
+                            selectionMode="Single" paste="onPaste"
+                            ariaLabelledBy="title" visibleRowCount="11"
+                            selectionBehavior="RowOnly" cellClick="">
+                        <t:columns>
+                            <t:Column width="11rem">
+                            <Label text="결재번호" textAlign="Center"/>
+                            <t:template>
+                                <Text text="{Apprno}" wrapping="false" textAlign="Center"/>
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="11rem">
+                            <Label text="결재자" textAlign="Center"/>
+                            <t:template>
+                                <Text text="{Apprmp}" wrapping="false" textAlign="Center"/>
+                            </t:template>
+                        </t:Column>
+                        <!-- <t:Column width="11rem">
+                            <Label text="결재 상태" />
+                            <t:template>
+                                <Text text="{Apprst}" wrapping="false" textAlign="Center"/>
+                            </t:template>
+                        </t:Column> -->
+                        <t:Column width="11rem">
+                            <Label text="반려 사유" textAlign="Center"/>
+                            <t:template>
+                                <Text text="{Rewhy}" wrapping="false" textAlign="Center"/>
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="11rem">
+                            <Label text="상신코드" textAlign="Center"/>
+                            <t:template>
+                                <Text text="{Sbmcd}" wrapping="false" textAlign="Center"/>
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="11rem">
+                            <Label text="생산계획번호" textAlign="Center"/>
+                            <t:template>
+                                <Text text="{Pdpcode}" wrapping="false" textAlign="Center"/>
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="11rem">
+                            <Label text="상신자 명" textAlign="Center"/>
+                            <t:template>
+                                <Text text="{Sbmemp}" wrapping="false" textAlign="Center"/>
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="11rem">
+                            <Label text="상신 내용" />
+                            <t:template>
+                                <Text text="{Sbmdesc}" wrapping="false" textAlign="Center"/>
+                            </t:template>
+                        </t:Column>
+                        </t:columns>
+                    </t:Table>
+                </IconTabFilter>
+                
+                 <IconTabFilter text="생산계획 리스트" design="Horizontal" icon="sap-icon://factory">
+                    <t:Table id = "OPheader" rows="{/OpheaderSet}" 
+                            selectionMode="Single" paste="onPaste"
+                            ariaLabelledBy="title" visibleRowCount="11"
+                            selectionBehavior="RowOnly" cellClick="">
+                        <t:columns>
+                            <t:Column width="11rem">
+                                <Label text="생산계획 번호" textAlign="Center"/>
+                                <t:template>
+                                    <Text text="{Pdpcode}" wrapping="false" textAlign="Center"/>
+                                </t:template>
+                            </t:Column>
+                            <t:Column width="11rem">
+                                <Label text="계획 연도" textAlign="Center"/>
+                                <t:template>
+                                    <Text text="{Spyear}년" wrapping="false" textAlign="Center"/>
+                                </t:template>
+                            </t:Column>       
+                            <t:Column width="11rem">
+                                <Label text="계획 분기" textAlign="Center"/>
+                                <t:template>
+                                    <Text text="{Spquart}분기" wrapping="false" textAlign="Center"/>
+                                </t:template>
+                            </t:Column> 
+                            <t:Column width="11rem">
+                                <Label text="계획 월" textAlign="Center"/>
+                                <t:template>
+                                    <Text text="{Smonth}월" wrapping="false" textAlign="Center"/>
+                                </t:template>
+                            </t:Column> 
+                            <t:Column width="11rem">
+                                <Label text="생산계획 일자" textAlign="Center"/>
+                                <t:template>
+                                    <Text text="{Pdpld}" wrapping="false" textAlign="Center"/>
+                                </t:template>
+                            </t:Column> 
+                             <t:Column width="11rem">
+                                <Label text="계획 내역" textAlign="Center"/>
+                                <t:template>
+                                    <Text text="{Pdplin}" wrapping="false" textAlign="Center"/>
+                                </t:template>
+                            </t:Column>
+                            
+                            <t:Column width="11rem">
+                                <Label text="사원 번호" textAlign="Center"/>
+                                <t:template>
+                                    <Text text="{Empno}" wrapping="false" textAlign="Center"/>
+                                </t:template>
+                            </t:Column> 
+                            <t:Column width="11rem">
+                                <Label text="사원 명" textAlign="Center"/>
+                                <t:template>
+                                    <Text text="황지우" wrapping="false" textAlign="Center"/>
+                                </t:template>
+                            </t:Column> 
+                        </t:columns>
+                    </t:Table>
+                </IconTabFilter>
+                </items>
+            </IconTabBar>
+
+        </f:content>
+
+        
+    </f:DynamicPage>
+</mvc:View>

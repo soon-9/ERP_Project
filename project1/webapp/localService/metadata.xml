@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZGW_303PP_OPSBM_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="SbmW" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Sbmcd"/>
+                    <PropertyRef Name="Pernr"/>
+                    <PropertyRef Name="Dptco"/>
+                    <PropertyRef Name="Appryear"/>
+                </Key>
+                <Property Name="Sbmcd" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="상신코드" sap:updatable="false"/>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="사원번호" sap:updatable="false"/>
+                <Property Name="Dptco" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Busor" sap:updatable="false"/>
+                <Property Name="Appryear" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="연도" sap:updatable="false"/>
+                <Property Name="Sbmemp" Type="Edm.String" MaxLength="9" sap:unicode="false" sap:label="상신자"/>
+                <Property Name="Sbmdesc" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="상신 내용"/>
+                <Property Name="Apprst" Type="Edm.String" MaxLength="12" sap:unicode="false" sap:label="결재 상태"/>
+                <Property Name="Apprmp" Type="Edm.String" MaxLength="9" sap:unicode="false" sap:label="상신자"/>
+                <Property Name="Apprno" Type="Edm.String" MaxLength="12" sap:unicode="false" sap:label="결재 번호"/>
+                <Property Name="Apprdat" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="결재일자"/>
+                <Property Name="Rewhy" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="반려사유"/>
+                <Property Name="Pdpcode" Type="Edm.String" MaxLength="12" sap:unicode="false" sap:label="생산계획번호"/>
+            </EntityType>
+            <EntityType Name="Opheader" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Pdpcode"/>
+                </Key>
+                <Property Name="Pdpcode" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="생산계획번호" sap:updatable="false"/>
+                <Property Name="Spyear" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="계획연도"/>
+                <Property Name="Spquart" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="계획분기"/>
+                <Property Name="Smonth" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="계획월"/>
+                <Property Name="Pdpld" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="제품납기일"/>
+                <Property Name="Pdplin" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="생산계획내역"/>
+                <Property Name="Apprst" Type="Edm.String" MaxLength="12" sap:unicode="false" sap:label="결재 상태"/>
+                <Property Name="Empno" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="사원번호"/>
+            </EntityType>
+            <EntityType Name="Opitem" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Pdpcode"/>
+                    <PropertyRef Name="Matcode"/>
+                </Key>
+                <Property Name="Pdpcode" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="생산계획번호" sap:updatable="false"/>
+                <Property Name="Matcode" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="자재코드" sap:updatable="false"/>
+                <Property Name="Matspt" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="제품군"/>
+                <Property Name="Bomid" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="BOM ID"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="공장코드"/>
+                <Property Name="Scode" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="창고코드"/>
+                <Property Name="Pqua" Type="Edm.Int32" sap:unicode="false" sap:label="계획수량"/>
+                <Property Name="Unit" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Base Unit" sap:semantics="unit-of-measure"/>
+                <Property Name="Ordflag" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="오더 생성 여부"/>
+            </EntityType>
+            <EntityType Name="Smaster" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Scode"/>
+                </Key>
+                <Property Name="Scode" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="창고코드" sap:updatable="false"/>
+                <Property Name="Sname" Type="Edm.String" MaxLength="20" sap:unicode="false" sap:label="창고명"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="공장코드"/>
+                <Property Name="Stype" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="창고타입"/>
+                <Property Name="Address" Type="Edm.String" MaxLength="100" sap:unicode="false" sap:label="창고주소"/>
+                <Property Name="Telnum" Type="Edm.String" MaxLength="16" sap:unicode="false" sap:label="창고 전화번호"/>
+                <Property Name="Empno" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="사원번호"/>
+            </EntityType>
+            <EntityType Name="Pmaster" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Plant"/>
+                </Key>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="공장코드" sap:updatable="false"/>
+                <Property Name="Pname" Type="Edm.String" MaxLength="20" sap:unicode="false" sap:label="공장 이름"/>
+                <Property Name="Plloc" Type="Edm.String" MaxLength="100" sap:unicode="false" sap:label="공장 소재지"/>
+                <Property Name="Pltel" Type="Edm.String" MaxLength="20" sap:unicode="false" sap:label="공장 전화번호"/>
+                <Property Name="Empno" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="사원번호"/>
+                <Property Name="Empname" Type="Edm.String" MaxLength="5" sap:unicode="false" sap:label="이름"/>
+            </EntityType>
+            <EntityType Name="Mmaster" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Matcode"/>
+                    <PropertyRef Name="Matnm"/>
+                    <PropertyRef Name="Mattype"/>
+                </Key>
+                <Property Name="Matcode" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="자재코드" sap:updatable="false"/>
+                <Property Name="Matnm" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="자재명" sap:updatable="false"/>
+                <Property Name="Mattype" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="자재유형" sap:updatable="false"/>
+                <Property Name="Matspt" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="제품군"/>
+                <Property Name="Vencode" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="거래처코드"/>
+                <Property Name="Scode" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="창고코드"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="공장코드"/>
+                <Property Name="Stock" Type="Edm.Decimal" Precision="13" Scale="3" sap:unicode="false" sap:unit="Unit" sap:label="재고량"/>
+                <Property Name="Unit" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Base Unit" sap:semantics="unit-of-measure"/>
+                <Property Name="Matcost" Type="Edm.Decimal" Precision="24" Scale="3" sap:unicode="false" sap:unit="Currkey" sap:label="자재단가"/>
+                <Property Name="Currkey" Type="Edm.String" MaxLength="5" sap:unicode="false" sap:label="Currency" sap:semantics="currency-code"/>
+                <Property Name="Leadtime" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="납기"/>
+            </EntityType>
+            <EntityType Name="SbmA" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Sbmcd"/>
+                    <PropertyRef Name="Pernr"/>
+                    <PropertyRef Name="Dptco"/>
+                    <PropertyRef Name="Appryear"/>
+                </Key>
+                <Property Name="Sbmcd" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="상신코드" sap:updatable="false"/>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="사원번호" sap:updatable="false"/>
+                <Property Name="Dptco" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Busor" sap:updatable="false"/>
+                <Property Name="Appryear" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="연도" sap:updatable="false"/>
+                <Property Name="Sbmemp" Type="Edm.String" MaxLength="9" sap:unicode="false" sap:label="상신자"/>
+                <Property Name="Sbmdesc" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="상신 내용"/>
+                <Property Name="Apprst" Type="Edm.String" MaxLength="12" sap:unicode="false" sap:label="결재 상태"/>
+                <Property Name="Apprmp" Type="Edm.String" MaxLength="9" sap:unicode="false" sap:label="상신자"/>
+                <Property Name="Apprno" Type="Edm.String" MaxLength="12" sap:unicode="false" sap:label="결재 번호"/>
+                <Property Name="Apprdat" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="결재일자"/>
+                <Property Name="Rewhy" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="반려사유"/>
+                <Property Name="Pdpcode" Type="Edm.String" MaxLength="12" sap:unicode="false" sap:label="생산계획번호"/>
+            </EntityType>
+            <EntityType Name="SbmR" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Sbmcd"/>
+                    <PropertyRef Name="Pernr"/>
+                    <PropertyRef Name="Dptco"/>
+                    <PropertyRef Name="Appryear"/>
+                </Key>
+                <Property Name="Sbmcd" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="상신코드" sap:updatable="false"/>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="사원번호" sap:updatable="false"/>
+                <Property Name="Dptco" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Busor" sap:updatable="false"/>
+                <Property Name="Appryear" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="연도" sap:updatable="false"/>
+                <Property Name="Sbmemp" Type="Edm.String" MaxLength="9" sap:unicode="false" sap:label="상신자"/>
+                <Property Name="Sbmdesc" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="상신 내용"/>
+                <Property Name="Apprst" Type="Edm.String" MaxLength="12" sap:unicode="false" sap:label="결재 상태"/>
+                <Property Name="Apprmp" Type="Edm.String" MaxLength="9" sap:unicode="false" sap:label="상신자"/>
+                <Property Name="Apprno" Type="Edm.String" MaxLength="12" sap:unicode="false" sap:label="결재 번호"/>
+                <Property Name="Apprdat" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="결재일자"/>
+                <Property Name="Rewhy" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="반려사유"/>
+                <Property Name="Pdpcode" Type="Edm.String" MaxLength="12" sap:unicode="false" sap:label="생산계획번호"/>
+            </EntityType>
+            <EntityType Name="Emaster" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Bukrs"/>
+                    <PropertyRef Name="Empno"/>
+                    <PropertyRef Name="Deptno"/>
+                </Key>
+                <Property Name="Bukrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="회사코드" sap:updatable="false"/>
+                <Property Name="Empno" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="사원번호" sap:updatable="false"/>
+                <Property Name="Deptno" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="부서코드"/>
+                <Property Name="Dptname" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="부서명"/>
+                <Property Name="Custpw" Type="Edm.String" MaxLength="25" sap:unicode="false" sap:label="비밀번호"/>
+                <Property Name="Empname" Type="Edm.String" MaxLength="5" sap:unicode="false" sap:label="이름"/>
+                <Property Name="Empnum" Type="Edm.String" MaxLength="16" sap:unicode="false" sap:label="연락처"/>
+                <Property Name="Regidat" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="입사일자"/>
+                <Property Name="ApprTf" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="결재자 여부"/>
+            </EntityType>
+            <EntityContainer Name="ZGW_303PP_OPSBM_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="SbmcdSet" EntityType="ZGW_303PP_OPSBM_SRV.SbmW" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="OpheaderSet" EntityType="ZGW_303PP_OPSBM_SRV.Opheader" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="OpitemSet" EntityType="ZGW_303PP_OPSBM_SRV.Opitem" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="SmasterSet" EntityType="ZGW_303PP_OPSBM_SRV.Smaster" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="PmasterSet" EntityType="ZGW_303PP_OPSBM_SRV.Pmaster" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="MmasterSet" EntityType="ZGW_303PP_OPSBM_SRV.Mmaster" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="SbmASet" EntityType="ZGW_303PP_OPSBM_SRV.SbmA" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="SbmRSet" EntityType="ZGW_303PP_OPSBM_SRV.SbmR" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="EmasterSet" EntityType="ZGW_303PP_OPSBM_SRV.Emaster" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <FunctionImport Name="GET_NEXT_APPROVAL_CODE" ReturnType="ZGW_303PP_OPSBM_SRV.SbmW" EntitySet="SbmcdSet" m:HttpMethod="GET"/>
+            </EntityContainer>
+            <atom:link rel="self" href="http://edu.bgis.co.kr:8001/sap/opu/odata/sap/ZGW_303PP_OPSBM_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://edu.bgis.co.kr:8001/sap/opu/odata/sap/ZGW_303PP_OPSBM_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

@@ -6,134 +6,128 @@
 	xmlns:c="sap.ui.core"
     xmlns:l="sap.ui.layout"
     xmlns:f="sap.ui.layout.form">
-    <Page id="page" title="{i18n>title}">
+    <Page id="page" title="{i18n>title}" enableScrolling="true">
         
-         <Panel headerText="사진업로드" class="sapUiResponsiveMargin" width="95%">
-        <t:Table id="tableList"
-                 rows="{/RPhotoSet}"
-                 selectionMode="Single"
-                 ariaLabelledBy="title"
-                 width="auto"
-                 selectionBehavior="RowOnly">
-            <t:extension>
-                
-                <OverflowToolbar style="Clear">
-						<!--<Title id="title" text="Document header"/>-->
-                        <Text text="　　조회조건　"  class="customText"/>
-                        <Input id='ICustno' placeholder="고객번호" width="10rem"/>
-                        <Input id='IVbeln' placeholder="주문번호" width="10rem"/>
-                        <Button text = '나와라 얍!' icon ="sap-icon://search" press= "onSearch"/>
-                
-				</OverflowToolbar>
-        <Panel headerText="사진업로드" class="sapUiResponsiveMargin" width="95%">
-       	<f:SimpleForm id="contentForm"
-			  editable="false"
-            layout="ResponsiveGridLayout"
-            labelSpanXL="6"
-            labelSpanL="4"
-            labelSpanM="3"
-            labelSpanS="12"
-            adjustLabelSpan="false"
-            emptySpanXL="4"
-            emptySpanL="4"
-            emptySpanM="4"
-            emptySpanS="0"
-            columnsXL="1"
-            columnsL="1"
-            columnsM="1"
-            singleContainerFullSize="false"
-            width="100%"> 
-			<f:content>
+        <Panel class="sapUiResponsiveMargin" width="95%">
+            <headerToolbar >
+                <Toolbar class="customToolbar">
+                    <Label text="조회"/>
+                </Toolbar>
+            </headerToolbar>
+            <!--<Title id="title" text="Document header"/>-->
+            <VBox>
+                <HBox >
+                    <Text text="고객번호 : 　"  class="customText"/>
+                    <Input id='ICustno' placeholder="고객번호를 입력하세요." width="12rem"/>
+                </HBox>
+                <HBox >
+                    <Text text="주문번호 : 　"  class="customText"/>
+                    <Input id='IVbeln' placeholder="주문번호를 입력하세요." width="12rem"/>
+                    <Text text="　　　"/>
+                    <Button text = '나와라 얍!' icon ="sap-icon://search" press= "onSearch"/>
+                </HBox>
+            </VBox>
+        </Panel>
+
+        <Panel class="sapUiResponsiveMargin" width="95%">
+            <headerToolbar >
+                <Toolbar class="customToolbar">
+                    <Label text="사진업로드"/>
+                </Toolbar>
+            </headerToolbar>
             <VBox >
-            <HBox >
-				<Label text="고객번호　　" class="customText"/>
-                <Input id="Custno" placeholder="고객번호" width="7rem"/>
-                <Text text="　　"/>
-                <Label text="주문번호　　" class="customText"/>
-                <Input id="Vbeln" placeholder="주문번호" width="10rem"/>
-                <Text text="　　　"/>
-                <Label text="시리얼넘버　" class="customText"/>
-                <Input id="Srnum" placeholder="시리얼넘버" width="7rem"/>
-            </HBox>
-            <HBox >
-                <Label text="교육시작일　" class="customText"/>
-                <Input id="Rsdate" placeholder="yydyyMMd" width="7rem"/>
-                <Text text="　　"/>
-                <Label text="교육종료일　" class="customText"/>
-                <Input id="Redate" placeholder="yydyyMMd" width="7rem"/>
-            </HBox>
-            <HBox >
-               
-                <Label text="상태　　　　" class="customText"/>
-                <Input id="Status" placeholder="대기" width="7rem"/>
-                <Text text="　　"/>
-                <Label text="사진업로드　" class="customText"/>
-                <Input id="Photo" placeholder="사진URL" width="15rem"/>
-                    <Text text="　　　　　　　　　　　"/>
-                        <Button text = '지워져라얍!'   icon ="sap-icon://clear-all" press= "onClear"/>
-                        <Button text = '보여줘라얍!' icon ="sap-icon://display"   press= "onDisplay"/>
-                        <Button text = '수정되라 얍!'    icon ="sap-icon://edit"      press= "onUpdate"/>
-             </HBox>
-             </VBox>
-			</f:content>
-		</f:SimpleForm>
+                <HBox >
+                    <Label text="고객번호　　" class="customText"/>
+                    <Input id="Custno" placeholder="고객번호" width="7rem"/>
+                    <Text text="　　"/>
+                    <Label text="주문번호　　" class="customText"/>
+                    <Input id="Vbeln" placeholder="주문번호" width="10rem"/>
+                    <Text text="　　　"/>
+                    <Label text="시리얼넘버　" class="customText"/>
+                    <Input id="Srnum" placeholder="시리얼넘버" width="10rem"/>
+                </HBox>
+                <HBox >
+                    <Label text="교육시작일　" class="customText"/>
+                    <Input id="Rsdate" placeholder="yydyyMMd" width="7rem"/>
+                    <Text text="　　"/>
+                    <Label text="교육종료일　" class="customText"/>
+                    <Input id="Redate" placeholder="yydyyMMd" width="7rem"/>
+                </HBox>
+                <HBox >
+                    <Label text="상태　　　　" class="customText"/>
+                    <Input id="Status" placeholder="대기" width="7rem"/>
+                    <Text text="　　"/>
+                    <Label text="사진업로드　" class="customText"/>
+                    <Input id="Photo" placeholder="사진URL" width="15rem"/>
+                    <Text text="　　　　　　　　　　　　　　　"/>
+                    <Button text = '지워져라얍!'   icon ="sap-icon://clear-all" press= "onClear"/>
+                    <Button text = '보여줘라얍!' icon ="sap-icon://display"   press= "onDisplay"/>
+                    <Button text = '수정되라 얍!'    icon ="sap-icon://edit"      press= "onUpdate"/>
+                </HBox>
+            </VBox>
         </Panel >
-              
-        <OverflowToolbar>
-                    <Title id="title" text="랜탈회수리스트"/>
-                </OverflowToolbar>
-            </t:extension>
-            
-            <t:columns>
-                <t:Column width="8rem" hAlign="Center">
-                    <Label text="고객번호"  />
-                    <t:template>
-                        <Text text="{Custno}" wrapping="false" />
-                    </t:template>
-                </t:Column>
-                <t:Column width="8rem" hAlign="Center">
-                    <Label text="주문번호" />
-                    <t:template>
-                        <Text text="{Vbeln}" wrapping="false" />
-                    </t:template>
-                </t:Column>
-                <t:Column width="8rem" hAlign="Center">
-                    <Label text="시리얼넘버" />
-                    <t:template>
-                        <Text text="{Srnum}" wrapping="false" />
-                    </t:template>
-                </t:Column>
-                <t:Column width="8rem" hAlign="Center">
-                    <Label text="교육시작일" />
-                    <t:template>
-                        <Text text="{Rsdate}" wrapping="false" />
-                    </t:template>
-                </t:Column>
-                <t:Column width="8rem" hAlign="Center">
-                    <Label text="교육종료일" />
-                    <t:template>
-                        <Text text="{Redate}" wrapping="false" />
-                    </t:template>
-                </t:Column>
-                <t:Column width="8rem" hAlign="Center">
-                    <Label text="상태" />
-                    <t:template>
-                        <Text text="{Status}" wrapping="false" />
-                    </t:template>
-                </t:Column>
-                <t:Column width="23rem" hAlign="Center">
-            <Label text="사진" />
-            <t:template>
-                <Image
-                    src="{Photo}" 
-                    width="20%"
-                    height="auto"
-                    alt="사진" />
-            </t:template>
-        </t:Column>
-                
-            </t:columns>
-        </t:Table>
+
+        <Panel class="sapUiResponsiveMargin" width="95%">
+            <headerToolbar >
+                <Toolbar class="customToolbar">
+                    <Label text="랜탈회수리스트"/>
+                </Toolbar>
+            </headerToolbar>
+            <t:Table id="tableList"
+                    rows="{/RPhotoSet}"
+                    selectionMode="Single"
+                    ariaLabelledBy="title"
+                    width="auto"
+                    selectionBehavior="RowOnly">
+                <t:columns>
+                    <t:Column width="8rem" hAlign="Center">
+                        <Label text="고객번호"  />
+                        <t:template>
+                            <Text text="{Custno}" wrapping="false" />
+                        </t:template>
+                    </t:Column>
+                    <t:Column width="8rem" hAlign="Center">
+                        <Label text="주문번호" />
+                        <t:template>
+                            <Text text="{Vbeln}" wrapping="false" />
+                        </t:template>
+                    </t:Column>
+                    <t:Column width="8rem" hAlign="Center">
+                        <Label text="시리얼넘버" />
+                        <t:template>
+                            <Text text="{Srnum}" wrapping="false" />
+                        </t:template>
+                    </t:Column>
+                    <t:Column width="8rem" hAlign="Center">
+                        <Label text="교육시작일" />
+                        <t:template>
+                            <Text text="{Rsdate}" wrapping="false" />
+                        </t:template>
+                    </t:Column>
+                    <t:Column width="8rem" hAlign="Center">
+                        <Label text="교육종료일" />
+                        <t:template>
+                            <Text text="{Redate}" wrapping="false" />
+                        </t:template>
+                    </t:Column>
+                    <t:Column width="8rem" hAlign="Center">
+                        <Label text="상태" />
+                        <t:template>
+                            <Text text="{Status}" wrapping="false" />
+                        </t:template>
+                    </t:Column>
+                    <t:Column width="23rem" hAlign="Center">
+                        <Label text="사진" />
+                        <t:template>
+                            <Image
+                                src="{Photo}" 
+                                width="20%"
+                                height="auto"
+                                alt="사진" />
+                        </t:template>
+                    </t:Column>
+                </t:columns>
+            </t:Table>
          </Panel >
 
         <!-- <HBox class="sapUiSmallMargin">

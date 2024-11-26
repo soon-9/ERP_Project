@@ -1,0 +1,31 @@
+<mvc:Fragment xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    controllerName="sdfdsfds.project1.controller.bsview">
+    <Dialog title="결재자 선택"
+            id="valueHelpDialog"
+            class="sapUiResponsiveMargin"
+            visible="false">
+        <content>
+            <Table id="valueHelpTable" selectionMode="Single" growing="true">
+                <columns>
+                    <Column>
+                        <Text text="결재자 이름"/>
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{ApproverName}"/> <!-- 결재자 이름 -->
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+        <beginButton>
+            <Button text="확인" press="onValueHelpOk"/>
+        </beginButton>
+        <endButton>
+            <Button text="취소" press="onValueHelpCancel"/>
+        </endButton>
+    </Dialog>
+</mvc:Fragment>
