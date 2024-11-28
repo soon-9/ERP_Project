@@ -6,7 +6,7 @@ sap.ui.define([
 ], function (Controller, MessageToast, Filter, FilterOperator) {
     "use strict";
 
-    return Controller.extend("zc303.sd.photo.zc303rsphoto.controller.RentalView", {
+    return Controller.extend("zc303.rs.photo.zc303rsphoto.controller.PhotoView", {
         onInit: function () {
 
             

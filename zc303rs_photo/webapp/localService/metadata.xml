@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZGW_303RS_RPHOTO_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="RPhoto" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Custno"/>
+                    <PropertyRef Name="Vbeln"/>
+                </Key>
+                <Property Name="Custno" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="고객코드" sap:updatable="false"/>
+                <Property Name="Vbeln" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="주문번호" sap:updatable="false"/>
+                <Property Name="Srnum" Type="Edm.String" MaxLength="14" sap:unicode="false" sap:label="시리얼넘버"/>
+                <Property Name="Matcode" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="완제품코드"/>
+                <Property Name="Rsdate" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="렌탈시작일"/>
+                <Property Name="Redate" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="렌탈종료일"/>
+                <Property Name="Sodat" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="주문일"/>
+                <Property Name="Total" Type="Edm.Decimal" Precision="24" Scale="3" sap:unicode="false" sap:unit="Currkey" sap:label="총액"/>
+                <Property Name="Currkey" Type="Edm.String" MaxLength="5" sap:unicode="false" sap:label="Currency" sap:semantics="currency-code"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="회수상태"/>
+                <Property Name="Photo" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="PHOTO"/>
+            </EntityType>
+            <EntityContainer Name="ZGW_303RS_RPHOTO_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="RPhotoSet" EntityType="ZGW_303RS_RPHOTO_SRV.RPhoto" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+            </EntityContainer>
+            <atom:link rel="self" href="http://edu.bgis.co.kr:8001/sap/opu/odata/sap/ZGW_303RS_RPHOTO_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://edu.bgis.co.kr:8001/sap/opu/odata/sap/ZGW_303RS_RPHOTO_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

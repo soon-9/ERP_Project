@@ -1,5 +1,5 @@
-<mvc:View xmlns:unified="sap.ui.unified" controllerName="zc303.sd.photo.zc303rsphoto.controller.RentalView"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+<mvc:View controllerName="zc303.rs.photo.zc303rsphoto.controller.PhotoView"
+     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
     xmlns="sap.m"
     xmlns:t="sap.ui.table"
     xmlns:u="sap.ui.unified"

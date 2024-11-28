@@ -1,7 +1,9 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
-    "sap/m/MessageToast"
-], function (Controller, MessageToast) {
+    "sap/m/MessageToast",
+    "sap/ui/model/Filter",
+    "sap/ui/model/FilterOperator"
+], function (Controller, MessageToast, Filter, FilterOperator) {
     "use strict";
 
     return Controller.extend("zc303.sd.photo.zc303rsphoto.controller.RentalView", {
@@ -9,6 +11,38 @@ sap.ui.define([
             this._oDialog = this.byId("statusDialog");
             this._sSelectedCustno = ""; // 선택된 고객번호 저장
             this._sSelectedVbeln = "";  // 선택된 주문번호 저장
+
+            const oTable = this.byId("tableList");
+ 
+            // EventDelegate 추가
+            oTable.addEventDelegate({
+            onAfterRendering: function () {
+            const aColumns = oTable.getColumns(); // 테이블의 모든 컬럼 가져오기
+            aColumns.forEach((oColumn) => {
+                const $headerCell = oColumn.getDomRef(); // 헤더 DOM 가져오기
+                if ($headerCell) {
+                    $headerCell.classList.add("customHeader"); // 커스텀 클래스 추가
+                    }
+                });
+                }
+            });
+            
+
+        },
+
+        onBeforeRendering() {
+            // 사진 있는 행만 표시
+            let oTable = this.getView().byId("tableList"),
+                oBinding = oTable.getBinding("rows"),
+                aFilter = [];
+            
+            aFilter.push(new Filter({
+                path: "Photo",
+                operator: FilterOperator.NE,
+                value1: ""
+            }));
+
+            oBinding.filter(aFilter);
         },
 
         onCustnoPress: function (oEvent) {

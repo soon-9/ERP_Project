@@ -68,25 +68,25 @@
                  <Label text="외관 상태" />
                 <RadioButtonGroup id="AppearanceStatus" columns="3" selectedIndex="0">
                     <buttons>
-                        <RadioButton text="정상" key="정상" />
-                        <RadioButton text="양호" key="양호" />
-                        <RadioButton text="병신" key="병신" />
+                        <RadioButton text="정상" />
+                        <RadioButton text="양호" />
+                        <RadioButton text="병신" />
                     </buttons>
                 </RadioButtonGroup>
 
                 <Label text="내부 상태" />
                 <RadioButtonGroup id="InternalStatus" columns="3" selectedIndex="0">
                     <buttons>
-                        <RadioButton text="정상" key="정상" />
-                        <RadioButton text="주의" key="주의" />
-                        <RadioButton text="고장" key="고장" />
+                        <RadioButton text="정상" />
+                        <RadioButton text="주의" />
+                        <RadioButton text="고장" />
                     </buttons>
                 </RadioButtonGroup>
                 <Label text="상태 처리" />
                 <RadioButtonGroup id="ProcessingStatus" columns="2" selectedIndex="0">
                     <buttons>
-                        <RadioButton text="폐기" key="폐기" />
-                        <RadioButton text="회수" key="회수" />
+                        <RadioButton text="폐기" />
+                        <RadioButton text="회수" />
                     </buttons>
                 </RadioButtonGroup>
             </VBox>
